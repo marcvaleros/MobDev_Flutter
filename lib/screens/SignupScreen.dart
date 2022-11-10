@@ -14,12 +14,17 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController fnameController = TextEditingController();
+  final TextEditingController lnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController confirmpasswordController =
+      TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
+    String validation = '';
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
@@ -31,6 +36,27 @@ class _SignupScreenState extends State<SignupScreen> {
                 width: width * .9,
                 child: Column(
                   children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                              labelText: "First Name",
+                              hintText: "Enter First Name",
+                              controller: fnameController,
+                              textInputType: TextInputType.text),
+                        ),
+                        Expanded(
+                          child: CustomTextField(
+                              labelText: "Last Name",
+                              hintText: "Enter Last Name",
+                              controller: lnameController,
+                              textInputType: TextInputType.text),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
                     CustomTextField(
                         labelText: "Email Address",
                         hintText: "Enter Email Address",
@@ -45,6 +71,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         obscureText: obscurePassword,
                         onTap: handleObscurePassword,
                         controller: passwordController),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    PasswordField(
+                        labelText: "Confirm Password",
+                        hintText: "Enter Password",
+                        obscureText: obscurePassword,
+                        onTap: handleObscurePassword,
+                        controller: confirmpasswordController),
                     const SizedBox(
                       height: 20.0,
                     ),
