@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:midterm_project/screens/LoginScreen.dart';
+import 'package:english_words/english_words.dart';
 
 class Settings extends StatefulWidget {
   static String routeName = "/setting";
@@ -10,6 +11,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  final _randomWordPairs = <WordPair>[];
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
@@ -32,9 +34,30 @@ class _SettingsState extends State<Settings> {
               ))
         ],
       ),
-      body: const Center(
-        child: Text("Settings"),
-      ),
+      body: _buildList(),
+    );
+  }
+
+  Widget _buildList() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (context, item) {
+        if (item.isOdd) return const Divider();
+
+        final index = item ~/ 2;
+
+        if (index >= _randomWordPairs.length) {
+          _randomWordPairs.addAll(generateWordPairs().take(10));
+        }
+
+        return _buildRow(_randomWordPairs[index]);
+      },
+    );
+  }
+
+  Widget _buildRow(WordPair pair) {
+    return ListTile(
+      title: Text(pair.asPascalCase),
     );
   }
 }
