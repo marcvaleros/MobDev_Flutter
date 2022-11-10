@@ -64,7 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       iconData: Icons.login,
                       onPress: () {
                         Navigator.pushReplacementNamed(
-                            context, Dashboard.routeName);
+                            context, Dashboard.routeName,
+                            arguments: LoginCredentials(emailController.text));
                       },
                     ),
                     Container(
