@@ -24,14 +24,16 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String validation = '';
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+          color: Colors.black,
           image: DecorationImage(
-            image: AssetImage("assets/signup_scrn.jpg"),
+            image: const AssetImage("assets/signup_scrn.jpg"),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.2), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -49,6 +51,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               hintText: "Enter First Name",
                               controller: fnameController,
                               textInputType: TextInputType.text),
+                        ),
+                        const SizedBox(
+                          width: 20.0,
                         ),
                         Expanded(
                           child: CustomTextField(
