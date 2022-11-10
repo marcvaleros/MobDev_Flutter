@@ -28,7 +28,12 @@ class _SignupScreenState extends State<SignupScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/signup_scrn.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: SingleChildScrollView(
             child: Center(
