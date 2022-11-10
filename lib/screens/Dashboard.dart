@@ -18,7 +18,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as LoginCredentials;
-    // ignore: prefer_const_constructors
+    String allCaps = args.msg.toUpperCase();
     return Scaffold(
         appBar: AppBar(
           title: const Text("DASHBOARD"),
@@ -47,19 +47,23 @@ class _DashboardState extends State<Dashboard> {
                   image: const AssetImage("assets/signup_scrn.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.3), BlendMode.dstATop),
+                      Colors.black.withOpacity(0.6), BlendMode.dstATop),
                 ),
               ),
             ),
-            Text(
-              "Welcome, ${args.msg}",
-              style: const TextStyle(fontSize: 25, color: Colors.amber),
-            )
+            Text("WELCOME, $allCaps",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 12,
+                  background: Paint()
+                    ..color = Color.fromARGB(255, 127, 202, 40)
+                    ..strokeWidth = 20
+                    ..strokeJoin = StrokeJoin.round
+                    ..strokeCap = StrokeCap.round
+                    ..style = PaintingStyle.stroke,
+                  color: Colors.white,
+                ))
           ],
         ));
-        
   }
-
-
-  
 }

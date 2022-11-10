@@ -34,7 +34,23 @@ class _SettingsState extends State<Settings> {
               ))
         ],
       ),
-      body: _buildList(),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.black,
+              image: DecorationImage(
+                image: const AssetImage("assets/elements.gif"),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.3), BlendMode.dstATop),
+              ),
+            ),
+          ),
+          _buildList()
+        ],
+      ),
     );
   }
 
@@ -42,7 +58,12 @@ class _SettingsState extends State<Settings> {
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, item) {
-        if (item.isOdd) return const Divider();
+        if (item.isOdd) {
+          return const Divider(
+              // color: Color.fromARGB(255, 255, 255, 255),
+              // thickness: .5,
+              );
+        }
 
         final index = item ~/ 2;
 
@@ -57,7 +78,10 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildRow(WordPair pair) {
     return ListTile(
-      title: Text(pair.asPascalCase),
+      title: Text(
+        pair.asPascalCase,
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }

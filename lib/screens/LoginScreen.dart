@@ -29,10 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration: BoxDecoration(
           color: Colors.black,
           image: DecorationImage(
-            image: const AssetImage("assets/signup_scrn.jpg"),
+            image: const AssetImage("assets/sumeru.jpg"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.1), BlendMode.dstATop),
+                Colors.black.withOpacity(0.5), BlendMode.dstATop),
           ),
         ),
         child: Center(
