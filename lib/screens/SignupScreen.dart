@@ -33,7 +33,7 @@ class _SignupScreenState extends State<SignupScreen> {
             image: const AssetImage("assets/signup_scrn.jpg"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                Colors.black.withOpacity(0.3), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -111,6 +111,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           child: const Text(
                             "Already have an account? Log in here.",
                             style: TextStyle(
+                                color: Colors.white,
                                 height: 2,
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal),

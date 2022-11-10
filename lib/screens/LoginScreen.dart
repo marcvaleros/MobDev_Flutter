@@ -26,10 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
       //   title: const Text("Welcome to MNV "),
       // ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+          color: Colors.black,
           image: DecorationImage(
-            image: AssetImage("assets/login_scrn.jpg"),
+            image: const AssetImage("assets/signup_scrn.jpg"),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.1), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -74,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             "Don't have an account? Sign up here.",
                             style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 height: 2,
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal),
