@@ -26,10 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
       //   title: const Text("Welcome to MNV "),
       // ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+          color: Colors.black,
           image: DecorationImage(
-            image: AssetImage("assets/login_scrn.jpg"),
+            image: const AssetImage("assets/sumeru.jpg"),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -61,7 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       iconData: Icons.login,
                       onPress: () {
                         Navigator.pushReplacementNamed(
-                            context, Dashboard.routeName);
+                            context, Dashboard.routeName,
+                            arguments: LoginCredentials(emailController.text));
                       },
                     ),
                     Container(
@@ -74,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             "Don't have an account? Sign up here.",
                             style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 height: 2,
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal),

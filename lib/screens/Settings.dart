@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:midterm_project/screens/LoginScreen.dart';
+import 'package:english_words/english_words.dart';
 
 class Settings extends StatefulWidget {
   static String routeName = "/setting";
@@ -10,11 +11,14 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  final _randomWordPairs = <WordPair>[];
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return Scaffold(
       appBar: AppBar(
+        title: const Text("SETTINGS"),
+        backgroundColor: Color.fromARGB(255, 127, 202, 40),
         actions: [
           GestureDetector(
               onTap: () {
@@ -30,8 +34,53 @@ class _SettingsState extends State<Settings> {
               ))
         ],
       ),
-      body: const Center(
-        child: Text("Settings"),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.black,
+              image: DecorationImage(
+                image: const AssetImage("assets/elements.gif"),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.3), BlendMode.dstATop),
+              ),
+            ),
+          ),
+          _buildList()
+        ],
+      ),
+    );
+  }
+
+  Widget _buildList() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (context, item) {
+        if (item.isOdd) {
+          return const Divider(
+              // color: Color.fromARGB(255, 255, 255, 255),
+              // thickness: .5,
+              );
+        }
+
+        final index = item ~/ 2;
+
+        if (index >= _randomWordPairs.length) {
+          _randomWordPairs.addAll(generateWordPairs().take(10));
+        }
+
+        return _buildRow(_randomWordPairs[index]);
+      },
+    );
+  }
+
+  Widget _buildRow(WordPair pair) {
+    return ListTile(
+      title: Text(
+        pair.asPascalCase,
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
