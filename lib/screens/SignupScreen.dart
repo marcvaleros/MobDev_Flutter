@@ -99,10 +99,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       text: "Signup",
                       iconData: Icons.app_registration,
                       onPress: () {
-                        validation = validate(fnameController.text, lnameController.text, emailController.text, passwordController.text, confirmpasswordController.text);
-                        if(validation == true){
-                        Navigator.pushReplacementNamed(
-                            context, LoginScreen.routeName);
+                        validation = validate(
+                            fnameController.text,
+                            lnameController.text,
+                            emailController.text,
+                            passwordController.text,
+                            confirmpasswordController.text);
+                        if (validation == true) {
+                          Navigator.pushReplacementNamed(
+                              context, LoginScreen.routeName);
                         }
                       },
                     ),
@@ -140,33 +145,40 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
-  bool validate(String fname, String lname, String email, String pass, String confirmpass) {
+  bool validate(String fname, String lname, String email, String pass,
+      String confirmpass) {
     bool retval = true;
-    if(fname == '' || lname == '' || email == '' || pass == '' || confirmpass == ''){
-      ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: SizedBox(
-          height: 45.0, child: Center(
-            child:Text('Please fill in all input fields')))));
+    if (fname == '' ||
+        lname == '' ||
+        email == '' ||
+        pass == '' ||
+        confirmpass == '') {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          backgroundColor: Colors.red,
+          content: SizedBox(
+              height: 45.0,
+              child: Center(child: Text('Please fill in all input fields')))));
       retval = false;
+    } else {
+      if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(email) !=
+          true) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Colors.red,
+            content: SizedBox(
+                height: 45.0,
+                child: Center(child: Text('Email Address is Invalid')))));
+        retval = false;
+      }
+      if (pass != confirmpass) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Colors.red,
+            content: SizedBox(
+                height: 45.0,
+                child: Center(child: Text('Password does not Match')))));
+        retval = false;
+      }
     }
-    else {if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-    .hasMatch(email) != true){
-      ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: SizedBox(
-          height: 45.0, child: Center(
-            child:Text('Email Address is Invalid')))));
-      retval = false;
-    } 
-    if(pass != confirmpass){
-      ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: SizedBox(
-          height: 45.0, child: Center(
-            child:Text('Password does not Match')))));
-      retval = false;
-    }}
     return retval;
   }
 }
