@@ -1,6 +1,12 @@
 # midterm_project
 
-A new Flutter project.
+Mobile Development Midterm Project 
+
+## Submitted By:
+
+Marc Nathaniel Valeros
+Erik Miguel Celdran
+
 
 ## Getting Started
 
