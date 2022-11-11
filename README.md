@@ -4,8 +4,7 @@ Mobile Development Midterm Project
 
 ## Submitted By:
 
-Marc Nathaniel Valeros
-Erik Miguel Celdran
+Marc Nathaniel Valeros & Erik Miguel Celdran
 
 
 ## Getting Started
