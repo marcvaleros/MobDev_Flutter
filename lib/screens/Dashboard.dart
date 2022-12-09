@@ -22,7 +22,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("DASHBOARD"),
-          backgroundColor: Color.fromARGB(255, 127, 202, 40),
+          backgroundColor: const Color.fromARGB(255, 127, 202, 40),
           actions: [
             GestureDetector(
                 onTap: () {
@@ -56,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
                 style: TextStyle(
                   fontSize: 12,
                   background: Paint()
-                    ..color = Color.fromARGB(255, 127, 202, 40)
+                    ..color = const Color.fromARGB(255, 127, 202, 40)
                     ..strokeWidth = 20
                     ..strokeJoin = StrokeJoin.round
                     ..strokeCap = StrokeCap.round

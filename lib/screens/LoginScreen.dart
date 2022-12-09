@@ -68,21 +68,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             arguments: LoginCredentials(emailController.text));
                       },
                     ),
-                    Container(
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacementNamed(
-                                context, SignupScreen.routeName);
-                          },
-                          child: const Text(
-                            "Don't have an account? Sign up here.",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                height: 2,
-                                fontSize: 16,
-                                fontWeight: FontWeight.normal),
-                          ),
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, SignupScreen.routeName);
+                        },
+                        child: const Text(
+                          "Don't have an account? Sign up here.",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              height: 2,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal),
                         ),
                       ),
                     )

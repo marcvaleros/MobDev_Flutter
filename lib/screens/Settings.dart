@@ -18,7 +18,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("SETTINGS"),
-        backgroundColor: Color.fromARGB(255, 127, 202, 40),
+        backgroundColor: const Color.fromARGB(255, 127, 202, 40),
         actions: [
           GestureDetector(
               onTap: () {

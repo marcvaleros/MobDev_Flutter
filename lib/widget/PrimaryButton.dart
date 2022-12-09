@@ -17,7 +17,7 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           fixedSize: const Size(double.maxFinite, 50),
-          backgroundColor: Color.fromARGB(255, 127, 202, 40)),
+          backgroundColor: const Color.fromARGB(255, 127, 202, 40)),
       onPressed: onPress,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
