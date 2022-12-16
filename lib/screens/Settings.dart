@@ -12,6 +12,7 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   final _randomWordPairs = <WordPair>[];
+
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors

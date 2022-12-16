@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:midterm_project/services/AuthService.dart';
 import 'package:midterm_project/screens/Dashboard.dart';
 import 'package:midterm_project/screens/SignupScreen.dart';
 import 'package:midterm_project/widget/PrimaryButton.dart';
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  AuthService _authService = AuthService();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool obscurePassword = true;
@@ -63,9 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: "Login",
                       iconData: Icons.login,
                       onPress: () {
-                        Navigator.pushReplacementNamed(
-                            context, Dashboard.routeName,
-                            arguments: LoginCredentials(emailController.text));
+                        loginWithProvider();
+                        // Navigator.pushReplacementNamed(
+                        //     context, Dashboard.routeName,
+                        //     arguments: LoginCredentials(emailController.text));
                       },
                     ),
                     Center(
@@ -98,5 +101,13 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       obscurePassword = !obscurePassword;
     });
+  }
+
+  loginWithProvider() async {
+    try {
+      var user = await _authService.signInWithGoogle();
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacementNamed(context, Dashboard.routeName);
+    } catch (e) {}
   }
 }
