@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:midterm_project/models/StorageItem.dart';
 import 'package:midterm_project/services/AuthService.dart';
 import 'package:midterm_project/screens/Dashboard.dart';
 import 'package:midterm_project/screens/SignupScreen.dart';
+import 'package:midterm_project/services/StorageService.dart';
 import 'package:midterm_project/widget/PrimaryButton.dart';
 import '../widget/CustomTextField.dart';
 import '../widget/PasswordField.dart';
@@ -15,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  StorageService _storageService= StorageService();
   AuthService _authService = AuthService();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -106,6 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
   loginWithProvider() async {
     try {
       var user = await _authService.signInWithGoogle();
+      var accessToken =
+       StorageItem("accessToken", user.credential?.accessToken as String);
+      await _storageService.saveData(accessToken);
       // ignore: use_build_context_synchronously
       Navigator.pushReplacementNamed(context, Dashboard.routeName);
     } catch (e) {}

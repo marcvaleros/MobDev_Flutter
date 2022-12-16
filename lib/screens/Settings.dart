@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:midterm_project/screens/LoginScreen.dart';
 import 'package:english_words/english_words.dart';
+import 'package:midterm_project/services/AuthService.dart';
+import 'package:midterm_project/services/StorageService.dart';
 
 class Settings extends StatefulWidget {
   static String routeName = "/setting";
@@ -12,7 +14,8 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   final _randomWordPairs = <WordPair>[];
-
+  StorageService _storageService = StorageService();
+  AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
@@ -23,6 +26,7 @@ class _SettingsState extends State<Settings> {
         actions: [
           GestureDetector(
               onTap: () {
+                _storageService.deleteAllData();
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     LoginScreen.routeName, (route) => false);
               },
